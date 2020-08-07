@@ -23,6 +23,7 @@ def retrieve_probability(university, category, department, major, myval):
     mu = uni.valmin 
     std = abs(1-mu)/3
     probability = (1 - norm.cdf(myval, mu, std)) * 100
+    if probability > 95.0: probability = 95.0
 
     return probability
 
