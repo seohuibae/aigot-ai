@@ -29,5 +29,15 @@ def retrieve_probability(university, category, department, major, myval):
 
 if __name__ == "__main__":
 
-    st = StudentDB.select().where(StudentDB.id == 0x01).get() # TODO correct id 
-    retrieve_probability(st.university, st.category, st.department, st.major, st.myval) 
+    # st = StudentDB.select().where(StudentDB.id == 0x01).get() # TODO correct id 
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--university', type=str, default='서울대학교')
+    parser.add_argument('--category', type=str, default='기회균등')
+    parser.add_argument('--department', type=str, default='경영학부')
+    parser.add_argument('--major', type=str, default='경영학과')
+    parser.add_argument('--score', type=float, default=1.34)
+
+    args = parser.parse_args()
+
+    retrieve_probability(args.university, args.category, args.department, args.major, args.myval) 
