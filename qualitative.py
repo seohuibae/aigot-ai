@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd 
 import jamotools 
 from scipy.spatial import distance as dis
+import argparse
 
 def qualitative(text, uni):
     f = open('./data_qualitative/standard.txt', 'r')
@@ -35,6 +36,13 @@ def qualitative(text, uni):
 
 
 if __name__ == '__main__':
-    f = open('./data_qualitative/sample_06.txt','r')
-    text = f.read()
-    print(qualitative(text, '서울대학교'))
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--text_path', type=str, default='./data_qualitative/sample_01.txt')
+    parser.add_argument('--university', type=str, default='서울대학교')
+
+    args = parser.parse_args()
+
+    text = open(args.text_path, 'r').read()
+    print(qualitative(text, args.university))
+    
